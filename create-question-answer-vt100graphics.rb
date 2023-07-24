@@ -11,6 +11,7 @@ require 'logger'
 logger = Logger.new($stderr)
 logger.level = Logger::DEBUG
 # From https://simplicable.com/colors/dark-pink "64 Types of Dark Pink"
+ROW_LENGTH = 80
 PINK_COLOUR_PALETTE =
   %w[
     #7c383eff #8c055eff #90305dff #985672ff #9c004aff #9d6984ff #ab485bff #ab495cff
@@ -70,17 +71,22 @@ SWEET_CANYON_PALETTE =
     #ff9edbff
   ].freeze
 
+def calc_num_rows(content)
+  length = content.length
+  (length % ROW_LENGTH).zero? ? length.div(ROW_LENGTH) : length.div(ROW_LENGTH) + 1
+end
+
 def add_colours_based_on_text(palette, pixels, text)
   palette_length = palette.length
-  text_length_mod80 = text.length % 80
+  text_length_mod80 = text.length % ROW_LENGTH
   text_bytes = text.unpack('U*')
   text_bytes.each do |t|
-    pixels.push(palette[(t % palette_length) + 1])
+    pixels.push(palette[t % palette_length])
   end
-  # if it's not a multiple of 80 characters, pad with white
+  # if it's not a multiple of ROW_LENGTH characters, pad with white
   return pixels if text_length_mod80.zero?
 
-  pixels += Array.new(80 - text_length_mod80) { TRANSPARENT }
+  pixels += Array.new(ROW_LENGTH - text_length_mod80) { TRANSPARENT }
 end
 
 if ARGV.length < 2
@@ -97,15 +103,15 @@ fn_str += '%<min>2.2d-%<ss>2.2d-80x%<num_rows>d.text'
 all_questions.each do |q|
   pixels = []
   id = q['id']
+  num_rows = calc_num_rows(q['title'])
   pixels = add_colours_based_on_text(PINK_COLOUR_PALETTE, pixels, q['title'])
+  num_rows += calc_num_rows(q['content'])
   pixels = add_colours_based_on_text(PINK_COLOUR_PALETTE, pixels, q['content'])
-  num_rows = 2
   question_creator = q['creator']
   created = Time.parse(q['created']).utc
   answers = all_answers.find_all { |a| a['question_id'] == id }
   answers.each do |a|
-    length = a['content'].length
-    num_rows += length % 80 == 0 ? length.div(80) : length.div(80) + 1
+    num_rows += calc_num_rows(a['content'])
     pixels = if a['creator'] == question_creator
                add_colours_based_on_text(PINK_COLOUR_PALETTE, pixels, a['content'])
              else
