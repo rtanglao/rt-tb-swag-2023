@@ -14,8 +14,8 @@ logger = Logger.new($stderr)
 logger.level = Logger::DEBUG
 # From https://simplicable.com/colors/dark-pink "64 Types of Dark Pink"
 ROW_LENGTH = 80
-PINK_COLOUR_PALETTE = 
-[
+PINK_COLOUR_PALETTE =
+  [
     0x7c383eff, 0x8c055eff, 0x90305dff, 0x985672ff, 0x9c004aff, 0x9d6984ff, 0xab485bff, 0xab495cff,
     0xb94c66ff, 0xbb3377ff, 0xc6174eff, 0xc62168ff, 0xc62d42ff, 0xc7607bff, 0xc93756ff, 0xc95efbff,
     0xc97376ff, 0xcb416bff, 0xcc338bff, 0xcc33ccff, 0xcd7584ff, 0xce6ba4ff, 0xd0417eff, 0xd04a70ff,
@@ -24,11 +24,11 @@ PINK_COLOUR_PALETTE =
     0xe4007cff, 0xe4445eff, 0xe94b7eff, 0xe95295ff, 0xe96a97ff, 0xea5a79ff, 0xeb4962ff, 0xec6d71ff,
     0xf504c9ff, 0xf5054fff, 0xf56991ff, 0xf62681ff, 0xf77fbeff, 0xfa6e79ff, 0xfc0fc0ff, 0xfe02a2ff,
     0xfe46a5ff, 0xff007eff, 0xff0090ff, 0xff0099ff, 0xff0789ff, 0xff1476ff, 0xff1493ff, 0xff787bff
-].freeze
+  ].freeze
 
-TRANSPARENT = 0.freeze
+TRANSPARENT = 0
 SWEET_CANYON_PALETTE =
-[
+  [
     0x0f0e11ff, 0x2d2c33ff, 0x40404aff, 0x51545cff, 0x6b7179ff, 0x7c8389ff, 0xa8b2b6ff, 0xd5d5d5ff,
     0xeeebe0ff, 0xf1dbb1ff, 0xeec99fff, 0xe1a17eff, 0xcc9562ff, 0xab7b49ff, 0x9a643aff, 0x86482fff,
     0x783a29ff, 0x6a3328ff, 0x541d29ff, 0x42192cff, 0x512240ff, 0x782349ff, 0x8b2e5dff, 0xa93e89ff,
@@ -103,7 +103,7 @@ all_answers = CSV.read(ARGV[1], headers: true)\
 fn_str = 'tb-question-colours-%<id>s-%<yyyy>4.4d-%<mm>2.2d-%<dd>2.2d-%<hh>2.2d-'
 fn_str += '%<min>2.2d-%<ss>2.2d-80x%<num_rows>d.rgba'
 
-binary_data  = BinData::Array.new(type: :Uint32be)
+binary_data = BinData::Array.new(type: :Uint32be)
 all_questions.each do |q|
   pixels = []
   id = q['id']
