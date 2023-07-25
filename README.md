@@ -1,6 +1,15 @@
 # rt-tb-swag-2023
 thunderbird swag for all hands 2023 in montreal
 
+## 2023-07-24 generate RGBA directly and then PNG using rush
+
+```bash
+../rgba-create-question-answer-vt100graphics.rb ../sorted-by-id-thunderbird-2023-04-01-2023-06-30-questions.csv \
+../sorted-by-id-thunderbird-2023-04-01-2023-06-30-answers.csv
+# regex is capture what's after "80x" and before ".rgba" at the end of the string ("$")
+ls -1 *.rgba | rush 'magick -depth 8 -size 80x{@([0-9]+).rgba$}' {} {.}.png
+```
+
 ## 2023-07-23 generate text colours and then generate png from text
 
 ```bash
