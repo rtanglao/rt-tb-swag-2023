@@ -6,6 +6,8 @@ thunderbird swag for all hands 2023 in montreal
 magick montage '*80x*.png' -tile 80x28 -adjoin +frame +label +shadow -geometry '80x+0+0<' \
 no-spaces-80by28-tb-support-questions-infographic-april-june2023.png
 magick montage '*.png' -tile 28x tb-support-questions-infographic-april-june2023.png
+mv tb-support-questions-infographic-april-june2023.png \
+tb-support-questions-infographic-april-june2023-28x-default-geometry.png
 ```
 ## 2023-07-24 generate RGBA directly and then PNG using rush
 
