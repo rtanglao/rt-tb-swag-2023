@@ -1,6 +1,12 @@
 # rt-tb-swag-2023
 thunderbird swag for all hands 2023 in montreal
 
+### 2023-07-25 let's generate some infographics :-)
+```bash
+magick montage '*80x*.png' -tile 80x28 -adjoin +frame +label +shadow -geometry '80x+0+0<' \
+no-spaces-80by28-tb-support-questions-infographic-april-june2023.png
+magick montage '*.png' -tile 28x tb-support-questions-infographic-april-june2023.png
+```
 ## 2023-07-24 generate RGBA directly and then PNG using rush
 
 ```bash
