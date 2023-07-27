@@ -1,7 +1,7 @@
 # rt-tb-swag-2023
 thunderbird swag for all hands 2023 in montreal
 
-### 2023-07-25 even better some ashlar best fit fun :-) (only in  imagemagick 7+)
+## 2023-07-25 even better some ashlar best fit fun :-) (only in  imagemagick 7+)
 ```bash
 magick '*-80x*.png' -define ashlar:best-fit=true \
 'ashlar:ashlar-magick-3000-tb-aaq-2023-04-01-2023-06-30.png[3000x3000+0+0]'
@@ -9,7 +9,7 @@ montage '*-80x*.png' -define ashlar:best-fit=true \
 'ashlar:ashlar-montage-3000-tb-aaq-2023-04-01-2023-06-30.png[3000x3000+0+0]'
 ```
 
-### 2023-07-25 let's generate some infographics :-)
+## 2023-07-25 let's generate some infographics :-)
 ```bash
 magick montage '*80x*.png' -tile 80x28 -adjoin +frame +label +shadow -geometry '80x+0+0<' \
 no-spaces-80by28-tb-support-questions-infographic-april-june2023.png
