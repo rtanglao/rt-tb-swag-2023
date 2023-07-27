@@ -7,6 +7,7 @@ magick '*-80x*.png' -define ashlar:best-fit=true \
 'ashlar:ashlar-magick-3000-tb-aaq-2023-04-01-2023-06-30.png[3000x3000+0+0]'
 montage '*-80x*.png' -define ashlar:best-fit=true \
 'ashlar:ashlar-montage-3000-tb-aaq-2023-04-01-2023-06-30.png[3000x3000+0+0]'
+```
 
 ### 2023-07-25 let's generate some infographics :-)
 ```bash
