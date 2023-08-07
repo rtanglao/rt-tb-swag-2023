@@ -1,6 +1,13 @@
 # rt-tb-swag-2023
 thunderbird swag for all hands 2023 in montreal
 
+# 2023-08-06 how to create an image using the Grafista font
+* First add the font using font-manager, i.e. add Grafista
+* Second, create the graphic specifying the Grafista font on the command line
+```bash
+ magick   -size 400x200 -gravity Center   -background khaki   -pointsize 30   -font "Grafista Regular"   pango:"<i>A</i> &#x229B; <i>B</i> &#x21D2; <i>C</i>"   grafista-space-regular-pa_chars2.png
+
+```
 ## 2023-07-25 even better some ashlar best fit fun :-) (only in  imagemagick 7+)
 ```bash
 magick '*-80x*.png' -define ashlar:best-fit=true \
